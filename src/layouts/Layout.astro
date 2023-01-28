@@ -1,0 +1,30 @@
+---
+export interface Props {
+	title: string;
+	description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+		<meta name="generator" content={Astro.generator}/>
+		<meta name="keywords" content="korino, korino development, korii bot, korino world, korino pvp"/>
+		<meta name="description" content={description}/>
+		<title>{title}</title>
+	</head>
+	<body class="bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white text-lg font-medium flex flex-col justify-center">
+		<slot/>
+	</body>
+</html>
+<style is:global>
+	html, body {
+		font-family: 'Roboto', system-ui, sans-serif;
+		scroll-behavior: smooth;
+	}
+</style>

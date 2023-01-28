@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Menu from '../components/Menu.astro';
+---
+
+<Layout title="Welcome to Astro." description="Welcome to Korino Development.">
+	<div>
+		<nav class="font-bold text-xl fixed z-50 py-6 px-6 bg-white/20 dark:bg-black/20 backdrop-blur-lg w-full flex flex-row justify-between items-center">
+			<div>
+				<button id="toggleNavbarButton">
+					Toggle
+				</button>
+			</div>
+
+			<div>
+				<button class="" onclick="toggleNavbar()">
+					Toggle
+				</button>
+			</div>
+		</nav>
+	</div>
+
+	<div class="mt-24">
+		<main id="main">
+			<h1>
+				Why
+			</h1>
+		</main>
+	</div>
+
+	<menu>
+		<Menu one="Home" two="Korii Bot" three="Korino PvP" four="Korino World"/>
+	</menu>
+</Layout>
+
+<style>
+.visible {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.25s linear;
+}
+
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s 0.25s, opacity 0.25s linear;
+}
+</style>
+
+<script is:inline>
+	const menu = document.getElementById("menu");
+	const main = document.getElementById("main");
+	const toggleNavbarButton = document.getElementById("toggleNavbarButton")
+	const menuItems = document.querySelectorAll("div.menu-item")
+
+	toggleNavbarButton.addEventListener("click", () => {
+		if (menu.classList.contains("hidden")) {
+			menu.classList.remove("hidden");
+			menu.classList.add("visible");
+			main.classList.remove("visible");
+			main.classList.add("hidden");
+		} else {
+			menu.classList.remove("visible");
+			menu.classList.add("hidden");
+			main.classList.remove("hidden");
+			main.classList.add("visible");
+		};
+	});
+
+	menuItems.forEach((item, index) => {
+		item.addEventListener("mouseenter", () => {
+			menu.style.setProperty("--active-index", index)
+		});
+	});
+</script>
