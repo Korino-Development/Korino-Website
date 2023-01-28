@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Korino PvP</title>
+	<link href="misc.css" rel="stylesheet">
+	<script src="https://cdn.tailwindcss.com"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white text-lg font-medium flex flex-col justify-center w-full h-full min-h-screen">
+	<div>
+		<nav class="font-bold text-xl fixed z-50 py-6 px-6 bg-white/20 dark:bg-black/20 backdrop-blur-lg w-full flex flex-row justify-between items-center">
+			<div>
+				<button onclick="toggleNavbar()">
+					Toggle
+				</button>
+			</div>
+
+			<div>
+				<button class="" onclick="toggleNavbar()">
+					Toggle
+				</button>
+			</div>
+		</nav>
+	</div>
+
+	<div class="mt-24">
+		<h1>
+			Why
+		</h1>
+	</div>
+	
+	<menu>
+		<div id="menu" class="menu">
+			<div id="menu-items">
+				<!-- I made these divs instead of links so you can click on mobile to view the effect -->
+				<div class="menu-item">Home</div>
+				<div class="menu-item">Shop</div>
+				<div class="menu-item">About</div>
+				<div class="menu-item">Contact Us</div>
+			</div>
+			<div id="menu-background-pattern"></div>
+			<div id="menu-background-image"></div>
+		</div>
+	</menu>
+
+	<script>
+		const menu = document.getElementById("menu");
+		document.onload = toggleNavbar();
+
+		function toggleNavbar() {
+			if (menu.classList.contains("hidden")) {
+				menu.classList.remove("hidden");
+				menu.classList.add("visible");
+			} else {
+				menu.classList.remove("visible");
+				menu.classList.add("hidden");
+			}
+		}
+
+		Array.from(document.getElementsByClassName("menu-item"))
+		.forEach((item, index) => {
+				item.onmouseover = () => {
+						menu.style.setProperty("--active-index", index)
+				}
+		});
+	</script>
+</body>
+</html>
