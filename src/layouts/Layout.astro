@@ -1,10 +1,16 @@
 ---
+import Menu from '../components/Menu.astro';
+import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 export interface Props {
 	title: string;
 	description: string;
+	one: string;
+	two: string;
+	three: string;
+	four: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, one, two, three, four } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,14 +23,90 @@ const { title, description } = Astro.props;
 		<meta name="keywords" content="korino, korino development, korii bot, korino world, korino pvp"/>
 		<meta name="description" content={description}/>
 		<title>{title}</title>
+
+		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"/>
 	</head>
-	<body class="bg-neutral-100 text-black dark:bg-neutral-900 dark:text-white text-lg font-medium flex flex-col justify-center">
-		<slot/>
+	<body class="bg-neutral-900 text-white text-lg font-medium flex flex-col justify-center">
+		<div>
+			<nav class="font-bold text-xl fixed z-50 py-6 px-6 bg-black/20 backdrop-blur-lg w-full flex flex-row justify-between items-center">
+				<div>
+					<h1>
+						Korino Development
+					</h1>
+				</div>
+
+				<div>
+					<button id="toggleNavbarButton">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
+							<path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+						</svg>
+					</button>
+				</div>
+			</nav>
+
+			<menu>
+				<Menu one={ one } two={ two } three={ three } four={ four }/>
+			</menu>
+
+			<main class="mt-28 mx-12 sm:mx-16 md:mx-20 lg:mx-32 xl:mx-44" id="main">
+				<slot/>
+			</main>
+		</div>
 	</body>
 </html>
+
 <style is:global>
 	html, body {
 		font-family: 'Roboto', system-ui, sans-serif;
 		scroll-behavior: smooth;
 	}
+
+	.no_visible {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.no_hidden {
+		visbility: hidden;
+		opacity: 0;
+	}
+
+	.visible {
+		visibility: visible;
+		opacity: 1;
+		transition: opacity 0.25s linear;
+	}
+
+	.hidden {
+		visibility: hidden;
+		opacity: 0;
+		transition: visibility 0s 0.25s, opacity 0.25s linear;
+	}
 </style>
+
+<script>
+	const menu = document.getElementById("menu")!;
+	const main = document.getElementById("main")!;
+	const toggleNavbarButton = document.getElementById("toggleNavbarButton")!;
+	const menuItems = document.querySelectorAll("div.menu-item");
+
+	toggleNavbarButton.addEventListener("click", () => {
+		if (menu.classList.contains("hidden")) {
+			menu.classList.remove("hidden");
+			menu.classList.add("visible");
+			main.classList.remove("no_visible");
+			main.classList.add("no_hidden");
+		} else {
+			menu.classList.remove("visible");
+			menu.classList.add("hidden");
+			main.classList.remove("no_hidden");
+			main.classList.add("no_visible");
+		};
+	});
+
+	menuItems.forEach((item, index) => {
+		item.addEventListener("mouseenter", () => {
+			menu.style.setProperty("--active-index", index);
+		});
+	});
+</script>
