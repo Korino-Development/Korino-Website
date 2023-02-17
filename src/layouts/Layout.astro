@@ -87,6 +87,7 @@ const { title, description, one, two, three, four } = Astro.props;
 		animation: rotate 20s infinite;
 		opacity: 0.8;
 		transition-duration: 1s;
+		overflow: hidden;
 	}
 
 	#blur {
@@ -112,8 +113,23 @@ const { title, description, one, two, three, four } = Astro.props;
 		});
 	});
 
+	window.addEventListener("load", () => {
+		if (window.matchMedia("(pointer:fine)").matches) {
+			console.log("The user has a cursor.");
+			console.log("Nothing has changed.")
+		} else {
+			console.log("The user doesn't have a cursor.");
+			blob.classList.add("hidden");
+			console.log("Blob has been hidden.");
+			if (document.body.style.overflow != "hidden") {
+				document.body.style.setProperty("overflow", "auto");
+			}
+			console.log("Scroll bar has been set to auto.");
+		}
+	});
+
 	document.body.addEventListener("mousemove", (event) => {
-		if (window.matchMedia('(pointer:fine)').matches) {
+		if (!blob.classList.contains("hidden")) {
 			const { clientX, clientY } = event;
 
 			blob.animate({
