@@ -1,11 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Menu from '../components/Menu.astro';
+import Button from '../components/Button.astro';
 ---
 
-<Layout title="Welcome to Astro." description="Welcome to Korino Development."
+<Layout title="Korino Development" description="Welcome to Korino Development."
 		one="Home" two="Korii Bot" three="Korino PvP" four="Korino World">
-	<h1 class="text-7xl">
+	<h1 class="font-bold text-4xl md:text-5xl">
 		Korino Development ⚒️
 	</h1>
+
+	<p class="text-neutral-200 leading-6 tracking-wide mt-4">
+		Korino Development is a dedicated and skilled team of developers who are passionate about delivering innovative and cutting-edge solutions.
+		With a focus on quality and a strong work ethic, we as a small group are known for our ability to turn ideas into reality and deliver outstanding results on a variety of projects.
+	</p>
+
+	<h2 class="font-bold text-3xl mt-12">
+		Projects ⚒️
+	</h2>
+
+	<p class="text-neutral-200 leading-6 tracking-wide mt-2">
+		The Korino Development group specializes in Minecraft server creation, Discord bot development, and fostering a lively Discord community.
+		Our work is known for its quality and innovation, with a focus on delivering exceptional user experiences.
+	</p>
+
+	<div class="flex flex-col sm:flex-row gap-4 mt-2">
+		<Button text="⛏️ Korino PvP" href="/pvp"/>
+		<Button text="🤖 Korii Bot" href="/bot"/>
+		<Button text="🦜 Korino World" href="/world"/>
+	</div>
+
+	<h2 class="font-bold text-3xl mt-12">
+		Team 🫂
+	</h2>
+
+	<p class="text-neutral-200 leading-6 tracking-wide mt-2">
+		The team at Korino Development is comprised of talented and hardworking developers who are passionate about delivering cutting-edge solutions.
+		You can meet most of the team in our Discord server.
+	</p>
 </Layout>

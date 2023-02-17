@@ -7,6 +7,9 @@ import tailwind from "@astrojs/tailwind";
 import compress from "astro-compress";
 
 // https://astro.build/config
+import vue from "@astrojs/vue";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), compress()]
+  integrations: [tailwind(), compress(), vue()]
 });

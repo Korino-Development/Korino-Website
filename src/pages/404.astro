@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+---
+
+<Layout title="404 - Not Found" description="Invalid page."
+		one="Home" two="Korii Bot" three="Korino PvP" four="Korino World">
+    <h1 class="text-purple-500 font-bold text-4xl md:text-5xl">
+        How Did We Get Here?
+    </h1>
+
+	<div class="flex flex-col sm:flex-row gap-4 mt-2">
+		<Button id="go_back" text="⬅️ Go Back" href=""/>
+		<Button text="🏠 Home" href="/"/>
+	</div>
+</Layout>
+
+<script>
+    const go_back = document.getElementById('go_back')!;
+
+    go_back.addEventListener("click", () => {
+        history.back();
+    });
+</script>
