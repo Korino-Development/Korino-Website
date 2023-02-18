@@ -85,7 +85,7 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 		translate: -50% -50%;
 		border-radius: 50%;
 		animation: rotate 20s infinite;
-		opacity: 0.6;
+		opacity: 0.5;
 		transition-duration: 1s;
 		overflow: hidden;
 	}
@@ -102,6 +102,17 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 <script>
 	const blob = document.getElementById("blob")!;
 	const buttons = document.querySelectorAll("button")!;
+	const buttonz = document.querySelectorAll("#button")!;
+
+	buttonz.forEach((item) => {
+		item.addEventListener("mouseenter", () => {
+			blob.style.setProperty("opacity", "0.9");
+		});
+
+		item.addEventListener("mouseleave", () => {
+			blob.style.setProperty("opacity", "0.5");
+		});
+	});
 
 	buttons.forEach((item) => {
 		item.addEventListener("mouseenter", () => {
@@ -109,7 +120,7 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 		});
 
 		item.addEventListener("mouseleave", () => {
-			blob.style.setProperty("opacity", "0.6");
+			blob.style.setProperty("opacity", "0.5");
 		});
 	});
 
