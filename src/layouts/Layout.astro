@@ -1,19 +1,16 @@
 ---
+import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation.astro';
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 
 export interface Props {
 	title: string;
 	description: string;
-	one: string;
-	two: string;
-	three: string;
-	four: string;
 	color1: string;
 	color2: string;
 }
 
-const { title, description, one, two, three, four, color1, color2 } = Astro.props;
+const { title, description, color1, color2 } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -31,12 +28,13 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"/>
 	</head>
 	<body class="text-white text-lg bg-neutral-900 flex flex-row justify-center w-full h-full min-h-screen">
-		<Navigation title={ title } one={ one } two={ two } three={ three } four={ four }/>
+		<Navigation/>
 
 		<div id="blob"/>
 		<div id="blur"/>
 		<div class="w-[80%] md:w-[45rem] mt-32 z-10" id="main">
 			<slot/>
+			<Footer/>
 		</div>
 	</body>
 </html>
@@ -46,18 +44,11 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 		font-family: "Roboto";
 		scroll-behavior: smooth;
 		height: 100vh;
-	}
-
-	.visible {
-		visibility: visible;
-		opacity: 1;
-		transition: opacity 0.25s linear;
-	}
-
-	.hidden {
-		visibility: hidden;
-		opacity: 0;
-		transition: visibility 0s 0.25s, opacity 0.25s linear;
+		transition-duration: 1s;
+		background-color: rgb(23 23 23);
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
 	}
 
 	@keyframes rotate {
@@ -128,6 +119,17 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 		}
 	});
 
+	document.body.addEventListener("mouseenter", (event) => {
+		if (window.matchMedia("(pointer:fine)").matches) {
+			const { clientX, clientY } = event;
+
+			blob.animate({
+				left: `${clientX}px`,
+				top: `${clientY}px`
+			}, { duration: 500, fill: "forwards" });
+		}
+	});
+
 	document.body.addEventListener("mousemove", (event) => {
 		if (!blob.classList.contains("hidden")) {
 			const { clientX, clientY } = event;
@@ -135,7 +137,11 @@ const { title, description, one, two, three, four, color1, color2 } = Astro.prop
 			blob.animate({
 				left: `${clientX}px`,
 				top: `${clientY}px`
-			}, { duration: 5000, fill: "forwards" });
+			}, { duration: 2000, fill: "forwards" });
+		} else {
+			if (window.matchMedia("(pointer:fine)").matches) {
+				blob.classList.remove("hidden");
+			}
 		}
 	});
 </script>

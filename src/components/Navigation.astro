@@ -1,74 +1,24 @@
 ---
-import Menu from '../components/Menu.astro';
+import Button from '../components/Button2.astro';
 
-export interface Props {
-	title: string;
-	one: string;
-	two: string;
-	three: string;
-	four: string;
+let home, pvp, bot, world = false;
+
+if (Astro.url.toString().includes("pvp")) {
+	pvp = true;
+} else if (Astro.url.toString().includes("bot")) {
+	bot = true;
+} else if (Astro.url.toString().includes("world")) {
+	world = true;
+} else {
+	home = true;
 }
-
-const { title, one, two, three, four } = Astro.props;
 ---
 
-<nav class="font-bold text-xl fixed py-2 px-6 z-50 bg-black/20 backdrop-blur-lg w-full flex flex-row justify-between items-center">
-    <div>
-        <h1 class="text-2xl md:text-3xl">
-            { title }
-        </h1>
-    </div>
-
-    <div>
-		<button id="toggleNavbarButton">
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
-				<path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
-			</svg>
-		</button>
+<nav class="z-[999] fixed w-[90%] md:w-[50rem] xs:flex flex-row justify-between items-center px-4 py-2 mt-4 md:mt-6 rounded-md bg-white/5 border-2 border-white/10 backdrop-blur-sm">
+    <div class="flex flex-row items-center gap-1 sm:gap-2 md:gap-4">
+		<Button text="Home" href="/" click={ home }/>
+		<Button text="Korino PvP" href="/pvp" click={ pvp }/>
+		<Button text="Korii Bot" href="/bot" click={ bot }/>
+		<Button text="Korino World" href="/world" click={ world }/>
     </div>
 </nav>
-
-<!-- <Menu one={ one } two={ two } three={ three } four={ four }/> -->
-
-<!-- <div id="menu" class="flex items-center h-max w-max hidden">
-	<div class="xl:gap-24 lg:gap-16 md:gap-12 sm:gap-8 gap-6" id="menu-items">
-		<div class="menu-item">{ one }</div>
-		<div class="menu-item">{ two }</div>
-		<div class="menu-item">{ three }</div>
-		<div class="menu-item">{ four }</div>
-	</div>
-</div> -->
-
-
-<script>
-	const menu = document.getElementById("menu")!;
-	const main = document.getElementById("main")!;
-	const toggleNavbarButton = document.getElementById("toggleNavbarButton")!;
-	const menuItems = document.querySelectorAll("div.menu-item");
-	const blob = document.getElementById("blob")!;
-
-	toggleNavbarButton.addEventListener("click", () => {
-		if (menu.classList.contains("hidden")) {
-			menu.classList.remove("hidden");
-			menu.classList.add("visible");
-			main.classList.remove("visible");
-			main.classList.add("hidden");
-		} else {
-			menu.classList.remove("visible");
-			menu.classList.add("hidden");
-			main.classList.remove("hidden");
-			main.classList.add("visible");
-		};
-	});
-
-	menuItems.forEach((item, index) => {
-		item.addEventListener("mouseenter", () => {
-			menu.style.setProperty("--active-index", index);
-			blur.style.setProperty("backdrop-filter", "blur(8vmax)");
-		});
-
-		item.addEventListener("mouseleave", () => {
-			blur.style.setProperty("backdrop-filter", "blur(8vmax)");
-		});
-	});
-</script>

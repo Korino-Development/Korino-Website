@@ -1,0 +1,14 @@
+---
+export interface Props {
+	text: string;
+    href: string;
+    id?: string;
+    click?: boolean;
+}
+
+const { text, href, id, click } = Astro.props;
+---
+
+<a href={ href }>
+    { click ? <button id={ id } class="items-center gap-1 px-5 py-2 bg-black/25 text-neutral-300 hover:text-white hover:bg-black/25 duration-500 rounded-lg">{ text }</button> : <button id={ id } class="items-center gap-1 px-5 py-2 text-neutral-300 hover:text-white hover:bg-black/25 duration-500 rounded-lg">{ text }</button>}
+</a>

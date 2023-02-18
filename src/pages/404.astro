@@ -4,22 +4,22 @@ import Button from '../components/Button.astro';
 ---
 
 <Layout title="404 - Not Found" description="Invalid page."
-		one="Home" two="Korii Bot" three="Korino PvP" four="Korino World"
         color1="#e52d27" color2="#b31217">
-    <h1 class="font-bold text-4xl md:text-5xl">
-        How Did We Get Here?
+    <h1 class="font-bold text-4xl md:text-5xl mb-4" id="text">
+        Redirecting in 3 seconds...
     </h1>
 
-	<div class="flex flex-col sm:flex-row gap-4 mt-2">
-		<Button id="go_back" text="⬅️ Go Back" href=""/>
-		<Button text="🏠 Home" href="/"/>
-	</div>
+    <Button text="🏠 Click if you aren't being redirected" href="/"/>
 </Layout>
 
 <script>
-    const go_back = document.getElementById('go_back')!;
+    const text_element = document.getElementById("text")!;
 
-    go_back.addEventListener("click", () => {
-        history.back();
+    function redirect() {
+        window.location.replace("/")
+    }
+
+    window.addEventListener("load", () => {
+        setTimeout(redirect, 3000);
     });
 </script>
