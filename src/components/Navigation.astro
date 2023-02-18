@@ -20,24 +20,24 @@ const { title, one, two, three, four } = Astro.props;
     </div>
 
     <div>
-        <button title="show menu button" id="toggleNavbarButton">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
-                <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
-            </svg>
-        </button>
+		<button id="toggleNavbarButton">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12">
+				<path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm8.25 5.25a.75.75 0 01.75-.75h8.25a.75.75 0 010 1.5H12a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
+			</svg>
+		</button>
     </div>
 </nav>
 
 <!-- <Menu one={ one } two={ two } three={ three } four={ four }/> -->
 
-<div id="menu" class="flex items-center h-max w-max hidden">
+<!-- <div id="menu" class="flex items-center h-max w-max hidden">
 	<div class="xl:gap-24 lg:gap-16 md:gap-12 sm:gap-8 gap-6" id="menu-items">
 		<div class="menu-item">{ one }</div>
 		<div class="menu-item">{ two }</div>
 		<div class="menu-item">{ three }</div>
 		<div class="menu-item">{ four }</div>
 	</div>
-</div>
+</div> -->
 
 
 <script>
@@ -64,11 +64,11 @@ const { title, one, two, three, four } = Astro.props;
 	menuItems.forEach((item, index) => {
 		item.addEventListener("mouseenter", () => {
 			menu.style.setProperty("--active-index", index);
-			blob.style.setProperty("filter", "blur(100px)");
+			blur.style.setProperty("backdrop-filter", "blur(8vmax)");
 		});
 
 		item.addEventListener("mouseleave", () => {
-			blob.style.setProperty("filter", "blur(200px)");
+			blur.style.setProperty("backdrop-filter", "blur(8vmax)");
 		});
 	});
 </script>

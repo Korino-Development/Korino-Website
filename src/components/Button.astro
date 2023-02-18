@@ -8,8 +8,8 @@ export interface Props {
 const { text, href, id } = Astro.props;
 ---
 
-<button id={ id } class="items-center backdrop-blur-sm border-2 border-white/10 bg-white/5 shadow-md gap-1 px-5 py-2 hover:bg-white/20 duration-500 rounded-lg">
-    <a href={ href }>
+<a href={ href }>
+    <button id={ id } class="items-center backdrop-blur-sm border-2 border-white/10 bg-white/5 shadow-md gap-1 px-5 py-2 hover:bg-white/20 duration-500 rounded-lg">
         { text }
-    </a>
-</button>
+    </button>
+</a>

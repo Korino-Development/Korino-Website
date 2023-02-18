@@ -9,9 +9,11 @@ export interface Props {
 	two: string;
 	three: string;
 	four: string;
+	color1: string;
+	color2: string;
 }
 
-const { title, description, one, two, three, four } = Astro.props;
+const { title, description, one, two, three, four, color1, color2 } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -27,7 +29,6 @@ const { title, description, one, two, three, four } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"/>
-		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Titan+One&display=swap"/>
 	</head>
 	<body class="text-white text-lg bg-neutral-900 flex flex-row justify-center w-full h-full min-h-screen">
 		<Navigation title={ title } one={ one } two={ two } three={ three } four={ four }/>
@@ -40,12 +41,11 @@ const { title, description, one, two, three, four } = Astro.props;
 	</body>
 </html>
 
-<style is:global>
+<style is:global define:vars={{ color1, color2 }}>
 	html, body {
 		font-family: "Roboto";
 		scroll-behavior: smooth;
 		height: 100vh;
-		overflow: hidden;
 	}
 
 	.visible {
@@ -76,16 +76,16 @@ const { title, description, one, two, three, four } = Astro.props;
 
 	#blob {
 		background-color: white;
+		background: linear-gradient(to right, var(--color1), var(--color2));
 		height: 34vmax;
 		aspect-ratio: 1;
-		position: absolute;
+		position: fixed;
 		left: 50%;
 		top: 50%;
 		translate: -50% -50%;
 		border-radius: 50%;
-		background: linear-gradient(to right, aquamarine, mediumpurple);
 		animation: rotate 20s infinite;
-		opacity: 0.8;
+		opacity: 0.6;
 		transition-duration: 1s;
 		overflow: hidden;
 	}
@@ -93,7 +93,7 @@ const { title, description, one, two, three, four } = Astro.props;
 	#blur {
 		height: 100%;
 		width: 100%;
-		position: absolute;
+		position: fixed;
 		z-index: 2;
 		backdrop-filter: blur(12vmax);
 	}
@@ -105,18 +105,18 @@ const { title, description, one, two, three, four } = Astro.props;
 
 	buttons.forEach((item) => {
 		item.addEventListener("mouseenter", () => {
-			blob.style.setProperty("filter", "blur(100px)");
+			blob.style.setProperty("opacity", "0.9");
 		});
 
 		item.addEventListener("mouseleave", () => {
-			blob.style.setProperty("filter", "blur(200px)");
+			blob.style.setProperty("opacity", "0.6");
 		});
 	});
 
 	window.addEventListener("load", () => {
 		if (window.matchMedia("(pointer:fine)").matches) {
 			console.log("The user has a cursor.");
-			console.log("Nothing has changed.")
+			console.log("Nothing has been changed.");
 		} else {
 			console.log("The user doesn't have a cursor.");
 			blob.classList.add("hidden");
@@ -135,7 +135,7 @@ const { title, description, one, two, three, four } = Astro.props;
 			blob.animate({
 				left: `${clientX}px`,
 				top: `${clientY}px`
-			}, { duration: 3000, fill: "forwards" });
+			}, { duration: 5000, fill: "forwards" });
 		}
 	});
 </script>
