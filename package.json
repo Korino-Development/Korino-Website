@@ -11,14 +11,21 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^2.0.2",
     "@astrojs/tailwind": "^3.0.0",
     "@astrojs/vue": "^2.0.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
     "astro": "^2.0.13",
     "astro-compress": "^1.1.28",
     "astro-google-fonts-optimizer": "^0.2.2",
     "astro-heroicons": "^0.3.0",
     "astro-robots-txt": "^0.4.0",
-    "framer-motion": "^9.0.4",
+    "autoprefixer": "^10.4.13",
+    "framer-motion": "^9.0.7",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.7.1",
     "tailwindcss": "^3.2.4",
     "vue": "^3.2.47"
   }

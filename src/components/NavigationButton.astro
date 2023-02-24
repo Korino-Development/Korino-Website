@@ -1,0 +1,16 @@
+---
+export interface Props {
+	text: string;
+    href: string;
+    id?: string;
+    click?: boolean;
+    style?: string;
+    emoji?: string;
+}
+
+const { text, href, id, click, style, emoji } = Astro.props;
+---
+
+<a href={ href } class="text-neutral-300 hover:text-white duration-500">
+    <span>{ emoji }</span>{ click ? <button id={ id } class="font-bold" style={style}>{ text }</button> : <button id={ id }>{ text }</button>}
+</a>

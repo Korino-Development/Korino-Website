@@ -1,4 +1,4 @@
----
+--- 
 import Footer from '../components/Footer.astro';
 import Navigation from '../components/Navigation.astro';
 import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
@@ -6,15 +6,16 @@ import { GoogleFontsOptimizer } from "astro-google-fonts-optimizer";
 export interface Props {
 	title: string;
 	description: string;
-	color1: string;
-	color2: string;
+	primary: string;
+	secondary: string;
 }
 
-const { title, description, color1, color2 } = Astro.props;
+const { title, description, primary, secondary } = Astro.props;
+const style: string = `background: linear-gradient(to bottom right, ${primary}, ${secondary}); -webkit-background-clip: text; -webkit-text-fill-color: transparent;`;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width"/>
@@ -26,12 +27,13 @@ const { title, description, color1, color2 } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
 
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"/>
+		<script src="https://kit.fontawesome.com/e243a1dc50.js" crossorigin="anonymous"></script>
 	</head>
-	<body class="text-white text-lg bg-neutral-900 flex flex-row justify-center w-full h-full min-h-screen">
-		<Navigation/>
+	<body class="font-roboto select-none text-white bg-gradient-to-br text-lg bg-neutral-900 flex flex-row justify-center w-full h-full min-h-screen">
+		<Navigation style={ style }/>
 
-		<div id="blob"/>
-		<div id="blur"/>
+		<div id="blob" class="animate-rotate bg-white opacity-50 overflow-hidden duration-1000 rounded-1/2 h-34 aspect-square fixed top-1/2 left-1/2"/>
+		<div id="blur" class="h-full w-full fixed z-10 backdrop-blur-12"/>
 		<div class="w-[80%] md:w-[45rem] mt-32 z-10" id="main">
 			<slot/>
 			<Footer/>
@@ -39,109 +41,81 @@ const { title, description, color1, color2 } = Astro.props;
 	</body>
 </html>
 
-<style is:global define:vars={{ color1, color2 }}>
-	html, body {
-		font-family: "Roboto";
-		scroll-behavior: smooth;
-		height: 100vh;
-		transition-duration: 1s;
-		background-color: rgb(23 23 23);
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
-	}
-
-	@keyframes rotate {
-		from {
-			rotate: 0deg;
-		}
-		
-		50% {
-			scale: 1 1.5;
-		}
-		
-		to {
-			rotate: 360deg;
-		}
-	}
+<style is:global define:vars={{ primary, secondary }}>
 
 	#blob {
-		background-color: white;
-		background: linear-gradient(to right, var(--color1), var(--color2));
-		height: 34vmax;
-		aspect-ratio: 1;
-		position: fixed;
-		left: 50%;
-		top: 50%;
+		background: linear-gradient(to right, var(--primary), var(--secondary));
 		translate: -50% -50%;
-		border-radius: 50%;
-		animation: rotate 20s infinite;
-		opacity: 0.5;
-		transition-duration: 1s;
-		overflow: hidden;
-	}
-
-	#blur {
-		height: 100%;
-		width: 100%;
-		position: fixed;
-		z-index: 2;
-		backdrop-filter: blur(12vmax);
 	}
 </style>
 
 <script>
-	const blob = document.getElementById("blob")!;
-	const buttons = document.querySelectorAll("button")!;
+	if (!(typeof window === "undefined")) {
+		void new Audio("pop.mp3").play().catch(() => null);
+	}
 
-	buttons.forEach((item) => {
-		item.addEventListener("mouseenter", () => {
-			blob.style.setProperty("opacity", "0.9");
+	const blob = document.getElementById("blob");
+	const buttons = document.querySelectorAll("button");
+
+	if (!blob) {
+		console.error("⚠️ Blob does not exist.");
+
+	} else if (!buttons) {
+		console.error("⚠️ Buttons do not exists.");
+
+	} else {
+		console.info("🎉 Blob and buttons exist.")
+		buttons.forEach((item) => {
+			item.addEventListener("mouseenter", () => {
+				blob.style.setProperty("opacity", "0.7");
+			});
+
+			item.addEventListener("mouseleave", () => {
+				blob.style.setProperty("opacity", "0.5");
+			});
 		});
 
-		item.addEventListener("mouseleave", () => {
-			blob.style.setProperty("opacity", "0.5");
-		});
-	});
-
-	window.addEventListener("load", () => {
-		if (window.matchMedia("(pointer:fine)").matches) {
-			console.log("The user has a cursor.");
-			console.log("Nothing has been changed.");
-		} else {
-			console.log("The user doesn't have a cursor.");
-			blob.classList.add("hidden");
-			console.log("Blob has been hidden.");
-			if (document.body.style.overflow != "hidden") {
-				document.body.style.setProperty("overflow", "auto");
-			}
-			console.log("Scroll bar has been set to auto.");
-		}
-	});
-
-	document.body.addEventListener("mouseenter", (event) => {
-		if (window.matchMedia("(pointer:fine)").matches) {
-			const { clientX, clientY } = event;
-
-			blob.animate({
-				left: `${clientX}px`,
-				top: `${clientY}px`
-			}, { duration: 500, fill: "forwards" });
-		}
-	});
-
-	document.body.addEventListener("mousemove", (event) => {
-		if (!blob.classList.contains("hidden")) {
-			const { clientX, clientY } = event;
-
-			blob.animate({
-				left: `${clientX}px`,
-				top: `${clientY}px`
-			}, { duration: 2000, fill: "forwards" });
-		} else {
+		window.addEventListener("load", () => {
 			if (window.matchMedia("(pointer:fine)").matches) {
-				blob.classList.remove("hidden");
+				console.info("The user has a cursor.");
+				console.info("Nothing has been changed.");
+
+			} else {
+				console.info("The user doesn't have a cursor.");
+				blob.classList.add("hidden");
+				console.info("Blob has been hidden.");
+
+				if (document.body.style.overflow != "hidden") {
+					document.body.style.setProperty("overflow", "auto");
+					console.info("Scroll bar has been set to auto.");
+				}
 			}
-		}
-	});
+		});
+
+		document.body.addEventListener("mouseenter", (event) => {
+			if (window.matchMedia("(pointer:fine)").matches) {
+				const { clientX, clientY } = event;
+
+				blob.animate({
+					left: `${clientX}px`,
+					top: `${clientY}px`
+				}, { duration: 500, fill: "forwards" });
+			}
+		});
+
+		document.body.addEventListener("mousemove", (event) => {
+			if (!blob.classList.contains("hidden")) {
+				const { clientX, clientY } = event;
+
+				blob.animate({
+					left: `${clientX}px`,
+					top: `${clientY}px`
+				}, { duration: 3000, fill: "forwards" });
+			} else {
+				if (window.matchMedia("(pointer:fine)").matches) {
+					blob.classList.remove("hidden");
+				}
+			}
+		});
+	}
 </script>

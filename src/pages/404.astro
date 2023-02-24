@@ -4,7 +4,7 @@ import Button from '../components/Button.astro';
 ---
 
 <Layout title="404 - Not Found" description="Invalid page."
-        color1="#e52d27" color2="#b31217">
+        primary="#e52d27" secondary="#b31217">
     <h1 class="font-bold text-4xl md:text-5xl mb-4" id="text">
         Redirecting in 3 seconds...
     </h1>
@@ -13,10 +13,8 @@ import Button from '../components/Button.astro';
 </Layout>
 
 <script>
-    const text_element = document.getElementById("text")!;
-
     function redirect() {
-        window.location.replace("/")
+        window.location.replace("/");
     }
 
     window.addEventListener("load", () => {

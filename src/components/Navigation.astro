@@ -1,7 +1,7 @@
 ---
-import Button from '../components/Button2.astro';
+import Button from "../components/NavigationButton.astro";
 
-let home, pvp, bot, world = false;
+let pvp, bot, world, home;
 
 if (Astro.url.toString().includes("pvp")) {
 	pvp = true;
@@ -12,13 +12,84 @@ if (Astro.url.toString().includes("pvp")) {
 } else {
 	home = true;
 }
+
+export interface Props {
+	style: string;
+}
+
+const { style } = Astro.props;
 ---
 
-<nav class="z-[999] fixed w-[90%] md:w-[50rem] xs:flex flex-row justify-between items-center px-4 py-2 mt-4 md:mt-6 rounded-md bg-white/5 border-2 border-white/10 backdrop-blur-sm">
-    <div class="flex flex-row items-center gap-1 sm:gap-2 md:gap-4">
-		<Button text="Home" href="/" click={ home }/>
-		<Button text="Korino PvP" href="/pvp" click={ pvp }/>
-		<Button text="Korii Bot" href="/bot" click={ bot }/>
-		<Button text="Korino World" href="/world" click={ world }/>
+<nav class="px-4 py-3 z-50 fixed w-[50%] mt-6 backdrop-blur-sm border-2 border-white/10 bg-black/20 shadow-lg rounded-lg">
+    <div class="flex justify-between">
+        <div class="flex justify-start text-lg">
+            <h1 class="text-2xl font-bold">
+                Korino Development
+            </h1>
+        </div>
+        <div class="flex justify-end text-2xl space-x-4">
+            <button id="menu_button">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+                  </svg>                  
+            </button>
+        </div>
     </div>
 </nav>
+
+<menu id="menu" class="invisible fixed h-screen w-screen backdrop-blur-12 z-40">
+    <div class="top-1/2 left-1/2 fixed flex flex-col gap-2 font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl overflow-hidden text-ellipsis whitespace-nowrap" style="transform: translate(-50%, -50%);">
+        <Button text="Home" emoji="🏠" href="/" click={ home } style={ style }/>
+        <Button text="Korino PvP" emoji="⛏️" href="/pvp" click={ pvp } style={ style }/>
+        <Button text="Korii Bot" emoji="🤖" href="/bot" click={ bot } style={ style }/>
+        <Button text="Korino World" emoji="🌍" href="/world" click={ world } style={ style }/>
+    </div>
+</menu>
+
+<style>
+    .invisible {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 300ms, opacity 300ms;
+    }
+
+    .visibile {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s linear 0s, opacity 300ms;
+    }
+
+    .no_invisible {
+        visibility: hidden;
+        opacity: 0;
+        transition: visibility 0s linear 300ms, opacity 300ms;
+    }
+    
+    .no_visibile {
+        visibility: visible;
+        opacity: 1;
+        transition: visibility 0s linear 0s, opacity 300ms;
+    }
+</style>
+
+<script>
+    const blur = document.getElementById("blur")!;
+    const menu = document.getElementById("menu")!;
+    const button = document.getElementById("menu_button")!;
+
+    button.addEventListener("click", () => {
+        if (menu.classList.contains("invisible")) {
+            menu.classList.remove("invisible");
+            menu.classList.add("visibile");
+
+            blur.classList.remove("no_visibile");
+            blur.classList.add("no_invisible");
+        } else {
+            menu.classList.remove("visibile");
+            menu.classList.add("invisible");
+
+            blur.classList.remove("no_invisible");
+            blur.classList.add("no_visibile");
+        }
+    });
+</script>

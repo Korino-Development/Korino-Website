@@ -10,7 +10,14 @@ import compress from "astro-compress";
 import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
+import react from "@astrojs/react";
+
+// https://astro.build/config
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://spooki.xyz",
-  integrations: [tailwind(), compress(), robotsTxt({sitemap: false})]
+  integrations: [tailwind(), compress(), robotsTxt({
+    sitemap: false
+  }), react()]
 });
