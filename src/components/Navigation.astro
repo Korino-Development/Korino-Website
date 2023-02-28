@@ -28,7 +28,7 @@ const { style } = Astro.props;
             </h1>
         </div>
         <div class="flex justify-end text-2xl space-x-4">
-            <button id="menu_button">
+            <button id="menu_button" title="Toggle menu button">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
                   </svg>                  
@@ -39,10 +39,10 @@ const { style } = Astro.props;
 
 <menu id="menu" class="invisible fixed h-screen w-screen backdrop-blur-12 z-40">
     <div class="top-1/2 left-1/2 fixed flex flex-col gap-2 font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl overflow-hidden text-ellipsis whitespace-nowrap" style="transform: translate(-50%, -50%);">
-        <Button text="Home" emoji="🏠" href="/" click={ home } style={ style }/>
-        <Button text="Korino PvP" emoji="⛏️" href="/pvp" click={ pvp } style={ style }/>
-        <Button text="Korii Bot" emoji="🤖" href="/bot" click={ bot } style={ style }/>
-        <Button text="Korino World" emoji="🌍" href="/world" click={ world } style={ style }/>
+        <Button text="Home" emoji="🏠" href="/" click={home} style={style}/>
+        <Button text="Korino PvP" emoji="⛏️" href="/pvp" click={pvp} style={style}/>
+        <Button text="Korii Bot" emoji="🤖" href="/bot" click={bot} style={style}/>
+        <Button text="Korino World" emoji="🌍" href="/world" click={world} style={style}/>
     </div>
 </menu>
 

@@ -18,19 +18,26 @@ const style: string = `background: linear-gradient(to bottom right, ${primary}, 
 <html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width"/>
-		<meta name="generator" content={ Astro.generator }/>
-		<meta name="keywords" content="korino, korino development, korii bot, korino world, korino pvp"/>
-		<meta name="description" content={ description }/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width initial-scale=1.0"/>
+		<meta name="generator" content={Astro.generator}/>
+		<meta name="keywords" content="korino, korino development, korii bot, korino world, korino pvp, korii, minecraft server, miningpvp, minecraft, server"/>
+		<meta name="description" content={description}/>
 
-		<title>{ title }</title>
+		<meta name="title" content={title}>
+		<meta name="author" content="Korino Development">
+		<meta name="description" content={description}>
+		<meta name="theme-color" content="#171717"/>
+
+		<title>{title}</title>
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+		<link rel="apple-touch-icon" type="image/svg+xml" href="/favicon.svg"/>
 
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"/>
-		<script src="https://kit.fontawesome.com/e243a1dc50.js" crossorigin="anonymous"></script>
+		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"/>
 	</head>
 	<body class="font-roboto select-none text-white bg-gradient-to-br text-lg bg-neutral-900 flex flex-row justify-center w-full h-full min-h-screen">
-		<Navigation style={ style }/>
+		<Navigation style={style}/>
 
 		<div id="blob" class="animate-rotate bg-white opacity-50 overflow-hidden duration-1000 rounded-1/2 h-34 aspect-square fixed top-1/2 left-1/2"/>
 		<div id="blur" class="h-full w-full fixed z-10 backdrop-blur-12"/>

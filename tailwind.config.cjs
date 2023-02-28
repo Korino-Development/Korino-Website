@@ -8,6 +8,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				"roboto": ["Roboto", ...defaultTheme.fontFamily.sans],
+				"gothic": ["DotGothic16", ...defaultTheme.fontFamily.sans],
 			},
 
 			spacing: {
