@@ -13,6 +13,3 @@ We appreciate you wanting to contribute to this project. This project is more of
 
 ## License 📜
 This project is licensed under [`AGPLv3`](https://www.gnu.org/licenses/agpl-3.0.de.html) license. See the [`LICENSE`](https://github.com/Korino-Development/Korino-Website/LICENSE) file for more information.
-
-## Notice ⚠️
-I apologize for the horrible commit names.
