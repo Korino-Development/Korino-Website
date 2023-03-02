@@ -3,12 +3,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-	content: ["./src/**/*.astro"],
+	content: ["./src/**/*.{astro,js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
 			fontFamily: {
 				"roboto": ["Roboto", ...defaultTheme.fontFamily.sans],
-				"gothic": ["DotGothic16", ...defaultTheme.fontFamily.sans],
+				"minecraft": ["MinecraftiaRegular", ...defaultTheme.fontFamily.sans],
 			},
 
 			spacing: {

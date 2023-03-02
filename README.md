@@ -1,54 +1,15 @@
-# Astro Starter Kit: Basics
+# Korino Website 🌐
+The Korino Website is a website for Korino Development to showcase all projects such as the Korii Bot, Korino PvP Minecraft Server and the Korino World Discord Server.
 
-```
-npm create astro@latest -- --template basics
-```
+## Installing & Running 📥
+I do not recommend you run it yourself, you can visit a live demo at [`this link`](https://spooki.xyz), but here is the guide anyways. Make sure you have installed [`Node.js`](https://nodejs.org/en/download/) before trying to do this.
+1. Install the project's dependencies: `npm install`.
+2. Run a development server: `npm run dev`.
+3. Build the project: `npm run build`.
+Pretty easy, huh?
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/s/github/withastro/astro/tree/latest/examples/basics)
+## Contributing 💁
+We appreciate you wanting to contribute to this project. This project is more of a personal project so most contributions will not be accepted unless they are things such as spelling mistake fixes, not any actual code changes.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![basics](https://user-images.githubusercontent.com/4677417/186188965-73453154-fdec-4d6b-9c34-cb35c248ae5b.png)
-
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `npm install`          | Installs dependencies                            |
-| `npm run dev`          | Starts local dev server at `localhost:3000`      |
-| `npm run build`        | Build your production site to `./dist/`          |
-| `npm run preview`      | Preview your build locally, before deploying     |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## License 📜
+This project is licensed under [`AGPLv3`](https://www.gnu.org/licenses/agpl-3.0.de.html) license. See the [`LICENSE`](https://github.com/Korino-Development/Korino-Website/LICENSE) file for more information.
