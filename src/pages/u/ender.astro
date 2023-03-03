@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Ender" description="The portfolio of Ender."
+        primary="#e52d27" secondary="#b31217">
+    <h1 id="time"></h1>
+</Layout>
+
+<script>
+    const time = document.getElementById("time")!;
+
+    window.setInterval(updateTime, 1000);
+
+    function updateTime() {
+        let date = new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" });
+        
+        time.innerHTML = date
+    }
+</script>

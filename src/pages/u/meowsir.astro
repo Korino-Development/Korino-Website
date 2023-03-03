@@ -1,0 +1,20 @@
+---
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Meowsir" description="The portfolio of Meowsir."
+        primary="#4A00E0" secondary="#bc4e9c">
+    <h1 id="time"></h1>
+</Layout>
+
+<script>
+    const time = document.getElementById("time")!;
+
+    window.setInterval(updateTime, 1000);
+
+    function updateTime() {
+        let date = new Date().toLocaleString("en-US", { timeZone: "Europe/Berlin" });
+        
+        time.innerHTML = date
+    }
+</script>

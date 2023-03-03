@@ -36,10 +36,9 @@ const style: string = `background: linear-gradient(to bottom right, ${primary}, 
 
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap"/>
 		<GoogleFontsOptimizer url="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap"/>
-		<link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/minecraftia" type="text/css"/>
 	</head>
 	<body class="font-roboto select-none text-black dark:text-white bg-gradient-to-br text-lg bg-neutral-100 dark:bg-neutral-900 flex flex-row justify-center w-full h-full min-h-screen">
-		<Navigation style={style}/>
+		<Navigation title={title} style={style}/>
 
 		<div id="blob" class="animate-rotate bg-white opacity-50 overflow-hidden duration-1000 rounded-1/2 h-34 aspect-square fixed top-1/2 left-1/2"/>
 		<div id="blur" class="h-full w-full fixed z-10 backdrop-blur-12"/>

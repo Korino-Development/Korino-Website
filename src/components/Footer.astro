@@ -4,18 +4,14 @@ const year = new Date().getFullYear();
 
 <div class="mt-6 w-full flex flex-col items-start border-t-2 border-white/10 px-4 py-4 mb-20">
 	<h1 class="text-white text-2xl font-semibold">Korino Development</h1>
-	<h2 class="text-neutral-400 text-base">Made with 💖 using <a class="astro" href="https://astro.build">Astro</a> and <a class="tailwind" href="https://tailwindcss.com">TailwindCSS</a> • 2022-{year}</h2>
+	<h2 class="text-neutral-400 text-base">Made with 💖 using
+		<a class="bg-gradient-to-br bg-clip-text text-transparent from-purple-600 to-pink-500 transition-all duration-500 underline decoration-purple-600 hover:decoration-2" href="https://astro.build">Astro</a>
+		and
+		<a class="tailwind" href="https://tailwindcss.com">TailwindCSS</a>
+		• 2022-{year}</h2>
 </div>
 
 <style>
-	.astro {
-		background-image: linear-gradient(45deg, rgb(124, 58, 237), #da62c4 30%, white 60%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
-	}
-
 	.tailwind {
 		color: #0EA5E9;
 	}

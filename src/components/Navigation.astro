@@ -1,7 +1,7 @@
 ---
 import Button from "../components/NavigationButton.astro";
 
-let pvp, bot, world, home;
+let pvp, bot, world, home, ender, meowsir;
 
 if (Astro.url.toString().includes("pvp")) {
 	pvp = true;
@@ -9,22 +9,27 @@ if (Astro.url.toString().includes("pvp")) {
 	bot = true;
 } else if (Astro.url.toString().includes("world")) {
 	world = true;
+} else if (Astro.url.toString().includes("ender")) {
+	ender = true;
+} else if (Astro.url.toString().includes("meowsir")) {
+	meowsir = true;
 } else {
 	home = true;
 }
 
 export interface Props {
+    title: string;
 	style: string;
 }
 
-const { style } = Astro.props;
+const { title, style } = Astro.props;
 ---
 
 <nav class="z-50 fixed w-[90%] md:w-[50rem] xs:flex flex-row justify-between items-center px-4 py-2 mt-4 md:mt-6 backdrop-blur-sm border-2 border-white/10 bg-black/20 shadow-lg rounded-lg">
     <div class="flex justify-between">
         <div class="flex justify-start text-lg">
             <h1 class="text-xl md:text-2xl font-bold">
-                Korino Development
+                {title}
             </h1>
         </div>
         <div class="flex justify-end text-2xl space-x-4">
@@ -43,6 +48,9 @@ const { style } = Astro.props;
         <Button text="Korino PvP" emoji="⛏️" href="/pvp" click={pvp} style={style}/>
         <Button text="Korii Bot" emoji="🤖" href="/bot" click={bot} style={style}/>
         <Button text="Korino World" emoji="🌍" href="/world" click={world} style={style}/>
+    
+        <Button text="Ender2K89" emoji="👻" href="/u/ender" click={ender} style={style}/>
+        <Button text="MeowSir81" emoji="🤠" href="/u/meowsir" click={meowsir} style={style}/>
     </div>
 </menu>
 

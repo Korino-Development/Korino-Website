@@ -8,7 +8,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				"roboto": ["Roboto", ...defaultTheme.fontFamily.sans],
-				"minecraft": ["MinecraftiaRegular", ...defaultTheme.fontFamily.sans],
+				"minecraft": ["Minecraft", ...defaultTheme.fontFamily.sans],
 			},
 
 			spacing: {
