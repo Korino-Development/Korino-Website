@@ -36,19 +36,18 @@ const { title, style } = Astro.props;
             <button id="menu_button" title="Toggle menu button">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
-                  </svg>                  
+                </svg>                  
             </button>
         </div>
     </div>
 </nav>
 
-<menu id="menu" class="invisible fixed h-screen w-screen backdrop-blur-12 z-40">
-    <div class="top-1/2 left-1/2 fixed flex flex-col gap-2 font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl overflow-hidden text-ellipsis whitespace-nowrap" style="transform: translate(-50%, -50%);">
+<menu id="menu" class="invisible fixed flex items-center justify-center w-screen h-screen top-0 left-0 backdrop-blur-12 z-40">
+    <div class="flex flex-col justify-center items-start gap-2 sm:gap-4 md:gap-6">
         <Button text="Home" emoji="🏠" href="/" click={home} style={style}/>
         <Button text="Korino PvP" emoji="⛏️" href="/pvp" click={pvp} style={style}/>
         <Button text="Korii Bot" emoji="🤖" href="/bot" click={bot} style={style}/>
         <Button text="Korino World" emoji="🌍" href="/world" click={world} style={style}/>
-    
         <Button text="Ender2K89" emoji="👻" href="/u/ender" click={ender} style={style}/>
         <Button text="MeowSir81" emoji="🤠" href="/u/meowsir" click={meowsir} style={style}/>
     </div>
@@ -83,16 +82,23 @@ const { title, style } = Astro.props;
 <script>
     const blur = document.getElementById("blur")!;
     const menu = document.getElementById("menu")!;
+    const main = document.getElementById("main")!;
     const button = document.getElementById("menu_button")!;
 
     button.addEventListener("click", () => {
         if (menu.classList.contains("invisible")) {
+            document.body.style.overflow = "hidden";
+            main.classList.add("invisible");
+
             menu.classList.remove("invisible");
             menu.classList.add("visibile");
 
             blur.classList.remove("no_visibile");
             blur.classList.add("no_invisible");
         } else {
+            document.body.style.overflow = "auto";
+            main.classList.remove("invisible");
+
             menu.classList.remove("visibile");
             menu.classList.add("invisible");
 
